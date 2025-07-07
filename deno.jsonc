@@ -1,0 +1,35 @@
+{
+  "tasks": {
+    // shortcut for 11ty
+    "11ty": "deno run -A npm:@11ty/eleventy --input ./site-src",
+    // 11ty dev server, without concurrently sigint does not seem to work
+    "11ty:dev": "deno run -A npm:concurrently \"deno run 11ty --serve\"",
+    // ci build
+    "build": "deno lint && deno check && deno run 11ty",
+    // dev full application with Deno HMR & 11ty watch mode
+    "dev": "deno run -A npm:concurrently \"deno run --allow-read --allow-net --check --watch-hmr main.ts\" \"deno run 11ty --watch\"",
+    // serve full application (Hono)
+    "serve": "deno --allow-read --allow-net --check main.ts"
+  },
+  "imports": {
+    "@11ty/eleventy": "npm:@11ty/eleventy@^3.1.2",
+    "hono": "jsr:@hono/hono@^4.8.4",
+    "sass": "npm:sass@^1.89.2"
+  },
+  "fmt": {
+    "exclude": [
+      "_site"
+    ]
+  },
+  "lint": {
+    "rules": {
+      "tags": [
+        "recommended"
+      ],
+      "exclude": [
+        "require-await"
+      ]
+    }
+  },
+  "nodeModulesDir": "auto"
+}
