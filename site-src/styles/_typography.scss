@@ -1,0 +1,23 @@
+@use "variables" as vars;
+
+$heading-color: vars.$white;
+$text-color: vars.$gray-a40;
+
+body {
+  color: $text-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $heading-color;
+}
+
+a {
+  color: vars.$primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: vars.$primary-a60;
+  }
+}

@@ -6,6 +6,8 @@
     "11ty:dev": "deno run -A npm:concurrently \"deno run 11ty --serve\"",
     // ci build
     "build": "deno lint && deno check && deno run 11ty",
+    // delete static site output
+    "clean": "deno run -A npm:rimraf _site",
     // dev full application with Deno HMR & 11ty watch mode
     "dev": "deno run -A npm:concurrently \"deno run --allow-read --allow-net --check --watch-hmr main.ts\" \"deno run 11ty --watch\"",
     // serve full application (Hono)
