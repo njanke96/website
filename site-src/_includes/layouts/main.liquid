@@ -1,0 +1,46 @@
+---
+title: codejank
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/normalize.css" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="site-header">
+        <h1>codejank</h1>
+        <hr/>
+      </header>
+      {% assign navBaseClass = "nav-item" -%}
+      {%- assign navSelectedAppend = " nav-item-selected" -%}
+
+      {%- assign homeClasses = navBaseClass -%}
+      {%- assign blogClasses = navBaseClass -%}
+      {%- assign projectsClasses = navBaseClass -%}
+
+      {%- if activeNav == "home" -%}
+        {%- assign homeClasses = homeClasses | append: navSelectedAppend -%}
+      {%- elsif activeNav == "blog" -%}
+        {%- assign blogClasses = blogClasses | append: navSelectedAppend -%}
+      {%- elsif activeNav == "projects" -%}
+        {%- assign projectsClasses = projectsClasses | append: navSelectedAppend -%}
+      {%- endif -%}
+
+      <nav class="navigation">
+        <a class="{{ homeClasses }}" href="/">Home</a>
+        <a class="{{ blogClasses }}" href="/blog">Blog</a>
+        <a class="{{ projectsClasses }}" href="/projects">Projects</a>
+      </nav>
+      <main>
+        {{ content }}
+      </main>
+    </div>
+  </body>
+</html>

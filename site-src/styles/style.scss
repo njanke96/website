@@ -3,8 +3,50 @@
 
 body {
   background-color: vars.$background-color;
-  font-family:
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
-    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+
+.main-container {
+  max-width: 1024px;
+  margin: auto;
+  margin-top: vars.$space-lg;
+}
+
+.site-header {
+  margin-bottom: vars.$space-sm;
+
+  h1 {
+    font-size: 4em;
+    margin: 0;
+    user-select: none;
+  }
+
+  hr {
+    border-color: vars.$gray-a40;
+  }
+}
+
+.navigation {
+  display: flex;
+  gap: vars.$space-sm;
+  margin-bottom: vars.$space-md;
+
+  a.nav-item {
+    color: vars.$white;
+    text-decoration: none;
+    transition:
+      color vars.$transition-duration,
+      border-color vars.$transition-duration;
+
+    &:hover {
+      color: vars.$gray-a40;
+    }
+
+    &.nav-item-selected {
+      border-bottom: 2px solid vars.$primary;
+
+      &:hover {
+        border-bottom-color: vars.$primary-a60;
+      }
+    }
+  }
 }
